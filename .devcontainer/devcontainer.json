@@ -1,0 +1,26 @@
+{
+  "name": "DeepSeek Harness",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "24"
+    }
+  },
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "16gb",
+    "storage": "32gb"
+  },
+  "forwardPorts": [
+    3080
+  ],
+  "portsAttributes": {
+    "3080": {
+      "label": "DeepSeek Harness",
+      "onAutoForward": "notify",
+      "protocol": "http"
+    }
+  },
+  "postCreateCommand": "npm install --global pnpm@11.28.5 && pnpm install --frozen-lockfile && pnpm run build",
+  "remoteUser": "vscode"
+}
